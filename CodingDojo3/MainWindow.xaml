@@ -14,16 +14,16 @@
         <vm:MainViewModel></vm:MainViewModel>
     </Window.DataContext>
 
-        <Grid>
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition/>
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <Label Content="Currency" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0" Height="30"/>
-        <ComboBox HorizontalAlignment="Left" Margin="80,0" ItemsSource="{Binding Currencies}" VerticalAlignment="Center" Width="150" Height="30"/>
+        <ComboBox HorizontalAlignment="Left" Margin="80,0" ItemsSource="{Binding Currencies}" SelectedItem="{Binding SelectedCurrency}" VerticalAlignment="Center" Width="150" Height="30"/>
         <Grid Grid.Row="1" Width="500" HorizontalAlignment="Center" VerticalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Items}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="100"/>
                     <DataGridTextColumn Binding="{Binding Group}" Header="Group" Width="100"/>
@@ -39,9 +39,8 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-        <Button Content="Edit" HorizontalAlignment="Right" Margin="0,0,170,0" Grid.Row="2" VerticalAlignment="Center" Width="75"/>
-        <Button Content="Delete" HorizontalAlignment="Right" Margin="0,0,90,0" Grid.Row="2" VerticalAlignment="Center" Width="75"/>
-        <Button Content="Add" HorizontalAlignment="Right" Margin="0,0,10,0" Grid.Row="2" VerticalAlignment="Center" Width="75"/>
+        <Button Content="Delete" Command="{Binding BtnDeleteClicked}"  HorizontalAlignment="Right" Margin="0,16,10,27" Grid.Row="2" VerticalAlignment="Center" Width="85" FontSize="10"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,20,0,0" Grid.Row="2" TextWrapping="Wrap" Text="To edit an entry, just make the changes in the corresponding fields." VerticalAlignment="Top" Width="399" Height="20" FontSize="8" FontStyle="Italic"/>
 
 
 

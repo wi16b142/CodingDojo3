@@ -1,4 +1,5 @@
 ﻿using CodingDojo4DataLib;
+using CodingDojo4DataLib.Converter;
 using GalaSoft.MvvmLight;
 using System;
 
@@ -8,10 +9,24 @@ namespace CodingDojo3.ViewModels
     {
         StockEntry stockEntry;
         private double salesPriceInEuro;
+        private double purchasePriceInEuro;
 
         public StockEntryViewModel(StockEntry entry)
         {
             stockEntry = entry;
+            salesPriceInEuro = entry.SoftwarePackage.SalesPrice;
+            purchasePriceInEuro = entry.SoftwarePackage.PurchasePrice;
+        }
+
+        public StockEntryViewModel()
+        {
+            stockEntry = new StockEntry();
+        }
+
+        public void CalculatePriceFromEuro(Currencies currency)
+        {
+            this.SalesPrice = CurrencyConverter.ConvertFromEuroTo(currency, salesPriceInEuro);
+            this.PurchasePrice = CurrencyConverter.ConvertFromEuroTo(currency, purchasePriceInEuro);
         }
 
         public String Name
