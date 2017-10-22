@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace CodingDojo3
+namespace CodingDojo3.Converters
 {
     public class StockToBrushConverter : IValueConverter
     {
