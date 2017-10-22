@@ -21,7 +21,7 @@ namespace CodingDojo3.ViewModels
         public StockEntryViewModel()
         {
             this.stockEntry = new StockEntry();
-            this.stockEntry.SoftwarePackage = new Software("");
+            this.stockEntry.SoftwarePackage = new Software("dummy");
             this.stockEntry.SoftwarePackage.Category = new Group();
             this.stockEntry.SoftwarePackage.Category.Name = "dummy";
             salesPriceInEuro = this.stockEntry.SoftwarePackage.SalesPrice;
