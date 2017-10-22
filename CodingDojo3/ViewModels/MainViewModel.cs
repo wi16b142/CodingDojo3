@@ -15,7 +15,9 @@ namespace CodingDojo3.ViewModels
         private Currencies selectedCurrency;
         public ObservableCollection<StockEntryViewModel> Items { get => items; set => items = value; }
         private RelayCommand btnDeleteClicked;
+        private RelayCommand btnAddClicked;
         private StockEntryViewModel selectedItem;
+        private SampleManager sample;
 
         public Currencies SelectedCurrency
         {
@@ -43,11 +45,12 @@ namespace CodingDojo3.ViewModels
 
         public MainViewModel()
         {
-            SampleManager sample = new SampleManager();
+            sample = new SampleManager();
             stock = sample.CurrentStock.OnStock;
             BtnDeleteClicked = new RelayCommand(DeleteItem);
+            BtnAddClicked = new RelayCommand(AddItem);
 
-            foreach(var item in sample.CurrentStock.OnStock)
+            foreach (var item in sample.CurrentStock.OnStock)
             {
                 items.Add(new StockEntryViewModel(item));
             }
@@ -72,6 +75,17 @@ namespace CodingDojo3.ViewModels
         private void DeleteItem()
         {
             Items.Remove(SelectedItem);
+        }
+
+        public RelayCommand BtnAddClicked
+        {
+            get { return btnAddClicked; }
+            set { btnAddClicked = value; }
+        }
+
+        private void AddItem()
+        {
+            Items.Add(new StockEntryViewModel());
         }
 
 

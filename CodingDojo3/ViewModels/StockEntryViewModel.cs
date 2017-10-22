@@ -20,7 +20,12 @@ namespace CodingDojo3.ViewModels
 
         public StockEntryViewModel()
         {
-            stockEntry = new StockEntry();
+            this.stockEntry = new StockEntry();
+            this.stockEntry.SoftwarePackage = new Software("");
+            this.stockEntry.SoftwarePackage.Category = new Group();
+            this.stockEntry.SoftwarePackage.Category.Name = "dummy";
+            salesPriceInEuro = this.stockEntry.SoftwarePackage.SalesPrice;
+            purchasePriceInEuro = this.stockEntry.SoftwarePackage.PurchasePrice;
         }
 
         public void CalculatePriceFromEuro(Currencies currency)
